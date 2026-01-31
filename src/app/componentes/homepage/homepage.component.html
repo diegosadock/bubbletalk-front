@@ -1,9 +1,189 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
+<!-- HOMEPAGE SKELETON LOADING -->
+<div *ngIf="isLoading">
+    <div class="container mt-4 homepage-skeleton">
 
-            <h1 class="text-center my-4">Welcome to BubbleTalk</h1>
-            <p class="text-center">Your go-to platform for seamless communication.</p>
+        <!-- WELCOME HERO -->
+        <div class="hero-skeleton mb-5 skeleton"></div>
+
+        <!-- MINHAS BOLHAS -->
+        <section class="mb-5">
+            <div class="title-skeleton mb-3 skeleton"></div>
+
+            <div class="bubble-scroll">
+                <div class="bubble-card skeleton" *ngFor="let i of [1,2,3,4]"></div>
+            </div>
+        </section>
+
+        <!-- ATIVIDADE RECENTE -->
+        <section class="mb-5">
+            <div class="title-skeleton mb-3 skeleton"></div>
+
+            <div class="activity-card skeleton mb-4"></div>
+            <div class="activity-card skeleton mb-4"></div>
+        </section>
+
+        <!-- PESSOAS ATIVAS -->
+        <section class="mb-5">
+            <div class="title-skeleton small mb-3 skeleton"></div>
+
+            <div class="d-flex gap-2">
+                <div class="avatar-skeleton skeleton"></div>
+                <div class="avatar-skeleton skeleton"></div>
+                <div class="avatar-skeleton skeleton"></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-skeleton skeleton my-5"></div>
+
+        <!-- DESCOBRIR BOLHAS -->
+        <section>
+            <div class="title-skeleton mb-3 skeleton"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3" *ngFor="let i of [1,2]">
+                    <div class="discover-skeleton skeleton"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!-- HOMEPAGE CONTENT -->
+<div *ngIf="!isLoading">
+    <div class="container mt-4">
+
+        <!-- WELCOME HERO -->
+        <div class="welcome-hero mb-5">
+            <div class="welcome-content">
+                <span class="welcome-pill">
+                    <img src="../../../assets/logo.png" alt="">
+                </span>
+
+                <h1 class="welcome-title">
+                    Bom te ver por aqui, <span class="highlight">{{ user.name }}</span>
+                </h1>
+
+                <p class="welcome-subtitle">
+                    Suas bolhas estão vivas. Conversas, ideias e pessoas em movimento agora.
+                </p>
+            </div>
         </div>
+
+
+        <!-- MINHAS BOLHAS -->
+        <section class="mb-5">
+            <h5 class="fw-semibold mb-3">🫧 Minhas Bolhas</h5>
+
+            <!-- Skeleton Loading das Bolhas -->
+            <div class="bubble-scroll" *ngIf="isLoading">
+                <div class="bubble-card skeleton" *ngFor="let i of [1,2,3,4]"></div>
+            </div>
+
+
+            <div class="bubble-scroll" *ngIf="!isLoading">
+                <div class="bubble-card fade-up" *ngFor="let bubble of myBubbles; let i = index"
+                    [style.animationDelay.ms]="i * 80" [style.borderLeftColor]="bubble.color">
+                    <div class="bubble-icon" [style.background]="bubble.color + '22'" [style.color]="bubble.color">
+
+                        <i class="bi bi-{{ bubble.icon }}"></i>
+                    </div>
+
+                    <div class="bubble-info">
+                        <span class="fw-semibold">{{ bubble.name }}</span><br>
+                        <small class="text-muted">{{ bubble.type }}</small>
+                    </div>
+
+                    <span *ngIf="bubble.hasUpdates" class="update-dot"></span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SKELETON LOADING ATIVIDADE RECENTE -->
+        <div *ngIf="isLoading">
+            <div class="activity-card mb-3 skeleton" style="height: 90px;"></div>
+            <div class="activity-card mb-3 skeleton" style="height: 90px;"></div>
+        </div>
+
+        <!-- ATIVIDADE RECENTE -->
+        <div *ngIf="!isLoading">
+            <h5 class="fw-semibold mb-3">
+                🔥 O que está rolando nas suas bolhas
+            </h5>
+            <div class="activity-card mb-4 fade-up" *ngFor="let activity of activities; let i = index"
+                [style.animationDelay.ms]="i * 100">
+
+
+                <span class="bubble-pill mb-2">
+                    🫧 {{ activity.bubble }}
+                </span>
+
+                <ul class="list-unstyled mb-0 mt-2">
+                    <li *ngFor="let item of activity.items" class="activity-item">
+                        <img class="avatar" [src]="item.avatar" />
+                        <div class="activity-text">
+                            <span>
+                                <strong>{{ item.user }}</strong>
+                                {{ item.action }}
+                            </span>
+                            <small class="text-muted">
+                                {{ item.time }}
+                            </small>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- PESSOAS ATIVAS AGORA -->
+        <section class="mb-5">
+            <h6 class="fw-semibold mb-3">👥 Pessoas ativas agora</h6>
+            <div class="d-flex gap-2">
+                <img class="avatar" src="https://i.pravatar.cc/100?img=3" />
+                <img class="avatar" src="https://i.pravatar.cc/100?img=7" />
+                <img class="avatar" src="https://i.pravatar.cc/100?img=9" />
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION SOCIAL -->
+        <div class="cta-box my-5 text-center">
+            <h5 class="fw-bold">Sua bolha é o seu espaço 🌱</h5>
+            <p class="text-muted mb-3">
+                Crie ou participe de comunidades que fazem sentido pra você
+            </p>
+            <button class="btn px-4" routerLink="/bolhas/criar">
+                Criar nova bolha
+            </button>
+        </div>
+
+        <!-- DESCOBRIR BOLHAS -->
+        <section>
+            <h5 class="fw-semibold mb-3">🌍 Descobrir Bolhas</h5>
+
+            <div class="row">
+                <div class="col-md-6 mb-3 fade-up" *ngFor="let bubble of discoverBubbles; let i = index"
+                    [style.animationDelay.ms]="i * 120">
+                    <div class="discover-card">
+                        <h6 class="fw-semibold">{{ bubble.name }}</h6>
+                        <p class="text-muted small mb-2">
+                            {{ bubble.description }}
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-light text-dark">
+                                {{ bubble.type }}
+                            </span>
+
+                            <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                Entrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>

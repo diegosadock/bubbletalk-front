@@ -1,0 +1,48 @@
+<section class="bubble-profile-hero" [style.background]="bubble.theme.background">
+
+  <div class="hero-top">
+    <span class="bubble-chip" [style.background]="bubble.color">🫧 {{ bubble.name }}</span>
+
+    <div class="hero-actions">
+      <button class="btn-join">Entrar</button>
+      <button class="btn-follow-outline">Seguir</button>
+    </div>
+  </div>
+
+  <div class="bubble-user">
+    <img [src]="user.avatarUrl" class="avatar-lg" [ngClass]="membership.cosmetics.avatarBorder" />
+
+    <div class="bubble-identity">
+      <h2>&#64;{{ user.username }}</h2>
+      <span class="role">{{ membership.role }}</span>
+      <p class="bubble-bio">{{ membership.bio }}</p>
+
+      <div class="badges-inline">
+        <span class="badge-pill" *ngFor="let b of membership.badges">{{ b }}</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="bubble-reputation">
+  <div class="rep-head">
+    <h4>{{ membership.reputation.title }}</h4>
+    <small>Nível {{ membership.reputation.level }}</small>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar" [style.width.%]="membership.reputation.progress"></div>
+  </div>
+
+</section>
+
+<section class="customization">
+  <h3>Identidade visual</h3>
+  <div class="custom-grid">
+    <div class="custom-card">🎨 Tema ativo</div>
+    <div class="custom-card locked">✨ Bordas premium (em breve)</div>
+    <div class="custom-card">🖼 Banner</div>
+    <div class="custom-card">🧩 Itens cosméticos</div>
+  </div>
+</section>

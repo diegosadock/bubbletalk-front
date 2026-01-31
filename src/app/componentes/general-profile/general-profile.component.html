@@ -1,0 +1,53 @@
+<section class="profile-hero">
+  <div class="hero-inner">
+    <img [src]="user.avatarUrl" class="avatar-xl" />
+
+    <div class="identity">
+      <div class="top-row">
+        <h1>{{ user.displayName }}</h1>
+        <button class="btn-follow">Seguir</button>
+      </div>
+      <span class="username">&#64;{{ user.username }}</span>
+
+      <p class="bio">{{ user.bio }}</p>
+
+      <div class="tags">
+        <span class="tag">Nível {{ user.level }}</span>
+        <span class="tag">{{ user.title }}</span>
+        <span class="tag muted">Desde {{ user.joinedAt }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profile-stats">
+  <div class="stat-card">
+    <small>Bolhas</small>
+    <strong>{{ user.stats.bubbles }}</strong>
+  </div>
+  <div class="stat-card">
+    <small>Posts</small>
+    <strong>{{ user.stats.posts }}</strong>
+  </div>
+  <div class="stat-card">
+    <small>Interações</small>
+    <strong>{{ user.stats.interactions }}</strong>
+  </div>
+  <div class="stat-card wide">
+    <small>Principais bolhas</small>
+    <div class="bubble-list">
+      <span class="bubble-pill" *ngFor="let a of user.activities">{{ a.bubble }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="activity">
+  <h3>Atividade recente</h3>
+
+  <div class="activity-item" *ngFor="let a of user.activities">
+    <span class="dot" [style.background]="a.color"></span>
+    <p>
+      <strong>{{ a.bubble }}</strong> — {{ a.text }}
+    </p>
+  </div>
+</section>

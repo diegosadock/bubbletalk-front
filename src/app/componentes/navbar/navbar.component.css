@@ -1,3 +1,16 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3000; /* acima do feed, abaixo de modais */
+}
+
+/* LOGO */
+.logo img {
+    cursor: pointer;
+}
+
 /* ==================================================
    SEARCH
 ================================================== */

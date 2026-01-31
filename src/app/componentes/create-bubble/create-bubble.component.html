@@ -1,0 +1,103 @@
+<div class="container mt-4 create-bubble-page">
+
+    <!-- HERO -->
+    <div class="create-hero mb-4">
+        <span class="hero-pill">🫧 Nova Bolha</span>
+        <h1 class="hero-title">
+            Crie um espaço que faça sentido
+        </h1>
+        <p class="hero-subtitle">
+            Dê forma à sua comunidade. Conversas, ideias e pessoas.
+        </p>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="create-card fade-up">
+
+        <!-- PREVIEW -->
+        <div class="bubble-preview mb-4" [style.borderLeftColor]="bubble.color">
+            <div class="bubble-preview-icon" [style.background]="bubble.color + '22'" [style.color]="bubble.color">
+                🫧
+            </div>
+
+            <div>
+                <strong>{{ bubble.name || 'Nome da bolha' }}</strong><br>
+                <small class="text-muted">
+                    {{ bubble.description || 'Descrição da bolha' }}
+                </small>
+            </div>
+        </div>
+
+        <!-- FORM -->
+        <form class="create-form">
+
+            <!-- NOME -->
+            <div class="form-group">
+                <label>Nome da bolha</label>
+                <input type="text" placeholder="Ex: Umbanda, Java Brasil, Estudos Espirituais" [(ngModel)]="bubble.name"
+                    name="name" />
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea rows="3" placeholder="Sobre o que é essa bolha?" [(ngModel)]="bubble.description"
+                    name="description"></textarea>
+            </div>
+
+            <!-- DIRETRIZES -->
+            <div class="form-group">
+                <label>Diretrizes da bolha</label>
+                <textarea rows="3" placeholder="Regras, propósito, energia do espaço" [(ngModel)]="bubble.guidelines"
+                    name="guidelines"></textarea>
+            </div>
+
+            <!-- COR -->
+            <div class="form-group">
+                <label>Cor da bolha</label>
+
+                <div class="color-picker">
+                    <div *ngFor="let color of colors" class="color-dot" [style.background]="color"
+                        [class.active]="bubble.color === color" (click)="bubble.color = color"></div>
+                </div>
+            </div>
+
+            <!-- PRIVACIDADE -->
+            <div class="privacy-box">
+                <div class="privacy-header">
+                    <span class="privacy-title">Privacidade da bolha</span>
+                    <span class="privacy-subtitle">
+                        Defina quem pode entrar nesse espaço
+                    </span>
+                </div>
+
+                <label class="privacy-toggle">
+                    
+
+                    <div class="privacy-text">
+                        <strong>
+                            {{ bubble.isPublic ? 'Bolha pública' : 'Bolha privada' }}
+                        </strong>
+                        <small>
+                            {{
+                            bubble.isPublic
+                            ? 'Qualquer pessoa pode encontrar e participar'
+                            : 'Somente pessoas convidadas'
+                            }}
+                        </small>
+                    </div>
+                    <input type="checkbox" [(ngModel)]="bubble.isPublic" name="isPublic" />
+
+                    <span class="toggle-slider mt-2"></span>
+                </label>
+            </div>
+        </form>
+
+
+        <!-- CTA -->
+        <button class="btn btn-create w-100">
+            Criar bolha
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,452 @@
+/* ===== Skeleton Base ===== */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e9ecef 25%,
+    #f8f9fa 37%,
+    #e9ecef 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* ===== Hero ===== */
+.hero-skeleton {
+  height: 280px;
+  border-radius: 24px;
+}
+
+/* ===== Títulos ===== */
+.title-skeleton {
+  width: 180px;
+  height: 18px;
+  border-radius: 8px;
+}
+
+.title-skeleton.small {
+  width: 140px;
+}
+
+/* ===== Bolhas ===== */
+.bubble-card.skeleton {
+  min-width: 150px;
+  height: 110px;
+  border-radius: 18px;
+}
+
+/* ===== Atividade ===== */
+.activity-card.skeleton {
+  height: 90px;
+  border-radius: 16px;
+}
+
+/* ===== Avatares ===== */
+.avatar-skeleton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+/* ===== CTA ===== */
+.cta-skeleton {
+  height: 140px;
+  border-radius: 16px;
+}
+
+/* ===== Descobrir ===== */
+.discover-skeleton {
+  height: 120px;
+  border-radius: 18px;
+}
+
+/* ===== Scroll ===== */
+.bubble-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+/* ===== Skeleton Loading ===== */
+.skeleton {
+    background: linear-gradient(90deg,
+            #e9ecef 25%,
+            #f8f9fa 37%,
+            #e9ecef 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+    border-radius: 12px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+
+
+/* ===== Animação Fade Up ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp 0.4s ease both;
+}
+
+/* ===== Welcome Hero ===== */
+.welcome-hero {
+    background: linear-gradient(135deg,
+            rgba(111, 66, 193, 0.12),
+            rgba(255, 255, 255, 0.9));
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: 0 12px 30px rgba(111, 66, 193, 0.18);
+}
+
+.welcome-content {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.welcome-pill {
+    /* O segredo da centralização */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: rgba(111, 66, 193, 0.15);
+    color: #6f42c1;
+    
+    /* Tamanho do container (deve ser maior que a imagem) */
+    width: 100px;
+    height: 100px;
+    
+    /* Arredondamento perfeito */
+    border-radius: 50%; 
+    
+    margin-bottom: 16px;
+    overflow: hidden; /* Garante que nada saia do círculo */
+}
+
+.welcome-pill img {
+    /* Ajuste o tamanho da logo aqui para dar o "respiro" */
+    width: 70%; 
+    height: 70%;
+    object-fit: contain;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: #2c2c2c;
+}
+
+.welcome-title .highlight {
+    color: #6f42c1;
+}
+
+.welcome-subtitle {
+    font-size: 1rem;
+    color: #5f5f5f;
+}
+
+
+/* ===== Scroll das Bolhas ===== */
+.bubble-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    cursor: grab;
+}
+
+.bubble-scroll.dragging {
+    cursor: grabbing;
+}
+
+.bubble-scroll.dragging .bubble-card {
+    pointer-events: none;
+}
+
+/* ===== Minhas Bolhas ===== */
+
+.bubble-card {
+    position: relative;
+    min-width: 150px;
+    padding: 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #f3f0ff, #ffffff);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid transparent;
+    scroll-snap-align: start;
+}
+
+.bubble-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.bubble-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(111, 66, 193, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #6f42c1;
+    margin-bottom: 8px;
+}
+
+
+.bubble-info span {
+    font-weight: 600;
+}
+
+.bubble-info small {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+
+.update-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background: #dc3545;
+    border-radius: 50%;
+}
+
+/* ===== Atividade ===== */
+.activity-card {
+    padding: 18px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #6f42c1;
+}
+
+.bubble-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background: #e9d8fd;
+    color: #5a2ea6;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.activity-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+}
+
+.activity-item i {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+}
+
+/* ===== Call to Action Social ===== */
+.cta-box {
+    background: #f6f4ff;
+    border: 1px solid #e3ddff;
+    color: #2c2c2c;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 10px 30px rgba(111, 66, 193, 0.35);
+}
+
+.cta-box .btn {
+    background: #ffffff;
+    color: #6f42c1;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 10px 26px;
+    transition: all 0.2s ease;
+}
+
+.cta-box .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+/* ===== Descobrir ===== */
+.discover-card {
+    padding: 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f3f0ff);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+.discover-card:hover {
+    transform: translateY(-3px);
+}
+
+.discover-card h6 {
+    font-weight: 600;
+}
+
+/* ===== Ajustes Globais ===== */
+.container {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.bubble-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* ===== Responsividade Mobile ===== */
+/* ===== 480px ===== */
+@media (max-width: 480px) {
+
+    /* Welcome */
+    .welcome-hero {
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+
+    .welcome-title {
+        font-size: 1.45rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Bolhas */
+    .bubble-card {
+        min-width: 135px;
+        padding: 14px;
+    }
+
+    .bubble-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    /* Atividade */
+    .activity-card {
+        padding: 14px;
+    }
+
+    .activity-item {
+        font-size: 0.85rem;
+    }
+
+    /* CTA */
+    .cta-box {
+        padding: 24px 18px;
+    }
+
+    .cta-box h5 {
+        font-size: 1rem;
+    }
+
+    .cta-box p {
+        font-size: 0.9rem;
+    }
+
+    /* Descobrir */
+    .discover-card {
+        padding: 14px;
+    }
+}
+
+/* ===== 481px a 991px ===== */
+
+@media (min-width: 481px) and (max-width: 991px) {
+
+    .welcome-hero {
+        padding: 36px 28px;
+    }
+
+    .welcome-title {
+        font-size: 1.8rem;
+    }
+
+    .bubble-card {
+        min-width: 160px;
+    }
+
+    .activity-card {
+        padding: 16px;
+    }
+
+    .cta-box {
+        padding: 30px 26px;
+    }
+}
+
+/* ===== 992px a 1199px ===== */
+@media (min-width: 1200px) {
+
+    .welcome-content {
+        max-width: 720px;
+    }
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .activity-card {
+        padding: 20px;
+    }
+}

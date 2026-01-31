@@ -7,12 +7,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './componentes/homepage/homepage.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { CreateBubbleComponent } from './componentes/create-bubble/create-bubble.component';
+import { GeneralProfileComponent } from './componentes/general-profile/general-profile.component';
+import { BubbleProfileComponent } from './componentes/bubble-profile/bubble-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateBubbleComponent,
+    GeneralProfileComponent,
+    BubbleProfileComponent
   ],
   imports: [
     BrowserModule,

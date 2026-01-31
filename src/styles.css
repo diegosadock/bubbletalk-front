@@ -1,4 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+/* ===== Variáveis Globais ===== */
+:root {
+  --bt-primary: #6f42c1;
+  --bt-bg: #ffffff;
+  --bt-card: #ffffff;
+  --bt-text: #2c2c2c;
+}
+
+/* ===== Tema Escuro ===== */
+[data-theme='dark'] {
+  --bt-bg: #0f1020;
+  --bt-card: #1a1b2e;
+  --bt-text: #eaeaf0;
+}
+
+body {
+  padding-top: 64px; /* desktop */
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-top: 52px; /* altura real da navbar mobile */
+  }
+}
+
+
 html, body {
     overflow-x: hidden;
 }
