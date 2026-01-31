@@ -46,6 +46,14 @@ export class CosmeticStoreComponent {
     return (this.items as any)[this.activeCategory] || [];
   }
 
+  // Labels amigáveis para exibição das raridades
+  rarityNames: any = {
+    common: 'Comum',
+    rare: 'Raro',
+    epic: 'Épico',
+    legendary: 'Lendário'
+  };
+
   setCategory(id: string) {
     this.activeCategory = id;
   }

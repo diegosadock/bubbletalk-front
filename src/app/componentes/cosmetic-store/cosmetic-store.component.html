@@ -30,7 +30,7 @@
                     <span class="badge-featured">DESTAQUE DA SEMANA</span>
                     <h1>Tema: OÁSIS GALÁCTICO 🌌</h1>
                     <p>Transforme seu perfil em um santuário estelar com efeitos de partículas únicos.</p>
-                    <button class="btn btn-primary">COMPRAR POR 25.000</button>
+                    <button class="btn btn-dark">COMPRAR POR 25.000</button>
                 </div>
             </div>
         </header>
@@ -41,10 +41,10 @@
             </div>
 
             <div class="items-grid">
-                <div class="item-card" *ngFor="let item of currentItems" [ngClass]="item.rarity">
+                <div class="item-card" *ngFor="let item of currentItems" [ngClass]="['rarity-' + item.rarity]">
                     <div class="item-visual">
                         <span class="item-icon">{{ item.icon }}</span>
-                        <div class="rarity-tag">{{ item.rarity }}</div>
+                        <div class="rarity-tag">{{ rarityNames[item.rarity] || item.rarity }}</div>
                     </div>
                     <div class="item-footer">
                         <span class="item-name">{{ item.name }}</span>

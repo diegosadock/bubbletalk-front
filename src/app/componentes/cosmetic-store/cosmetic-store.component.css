@@ -237,6 +237,12 @@
     color: #fff;
 }
 
+/* Color the rarity tag according to the item's rarity (matches .rarity-* card classes) */
+.item-card.rarity-common .rarity-tag { background: #6c757d; box-shadow: 0 6px 18px rgba(108,117,125,0.12); }
+.item-card.rarity-rare .rarity-tag { background: #339af0; box-shadow: 0 6px 18px rgba(51,154,240,0.18); }
+.item-card.rarity-epic .rarity-tag { background: #a335ee; box-shadow: 0 6px 18px rgba(163,53,238,0.18); }
+.item-card.rarity-legendary .rarity-tag { background: #ff922b; color: #000; box-shadow: 0 6px 18px rgba(255,146,43,0.18); }
+
 .item-footer {
     padding: 30px;
     border-top: 1px solid rgba(111, 66, 193, 0.03);

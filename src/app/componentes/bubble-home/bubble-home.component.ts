@@ -20,15 +20,15 @@ export class BubbleHome2Component {
 
   user = {
     id: 99,
-    username: 'diegosadock',
-    avatarUrl: 'https://i.pravatar.cc/150?img=12'
+    username: 'seninha',
+    avatarUrl: '../../assets/erik.jpg'
   };
 
   posts = [
     {
       id: 1,
       author: 'seninha',
-      authorAvatar: 'https://i.pravatar.cc/150?img=5',
+      authorAvatar: '../../assets/erik.jpg',
       time: '2 horas',
       title: 'Qual a melhor stack pra uma rede social em 2026?',
       content:
