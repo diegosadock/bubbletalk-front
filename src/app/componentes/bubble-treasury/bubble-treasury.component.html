@@ -1,0 +1,90 @@
+<div class="treasury-root" [style.--bubble-color]="bubble.color">
+
+    <!-- TREASURY HEADER -->
+    <header class="treasury-header">
+        <div class="header-content">
+            <div class="header-left">
+                <button class="btn-back" routerLink="/bubble/home">➜</button>
+                <div class="title-group">
+                    <h1>Tesouro de {{ bubble.name }}</h1>
+                    <span class="status-token">Gestão da Comunidade</span>
+                </div>
+            </div>
+
+            <div class="balance-mega-card">
+                <div class="balance-info">
+                    <small>FUNDO COMUNITÁRIO</small>
+                    <strong>🪙 {{ treasuryBalance }}</strong>
+                </div>
+                <button class="btn btn-deposit"><span>Doar para o Tesouro</span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="treasury-layout">
+
+        <!-- TABS NAVIGATION -->
+        <nav class="treasury-nav">
+            <button class="tab-link active">Cosméticos Globais</button>
+            <button class="tab-link">Emojis & Stickers</button>
+            <button class="tab-link">Upgrades (Votação)</button>
+            <button class="tab-link">Gestão Financeira</button>
+        </nav>
+
+        <main class="treasury-content">
+
+            <!-- FEATURED UPGRADE (DEMOCRATIC) -->
+            <section class="voting-banner">
+                <div class="v-text">
+                    <span class="v-tag">VOTAÇÃO ATIVA</span>
+                    <h3>Qual será o próximo Cosmético Global da Bolha?</h3>
+                    <p>Membros votam e o Tesouro financia!</p>
+                </div>
+                <div class="options-grid">
+                    <div class="v-option" *ngFor="let opt of votingOptions">
+                        <div class="opt-info">
+                            <span class="name">{{ opt.name }}</span>
+                            <span class="votes">{{ opt.percentage }}%</span>
+                        </div>
+                        <div class="v-bar">
+                            <div class="v-fill" [style.width.%]="opt.percentage"></div>
+                        </div>
+                        <button class="btn-vote">Votar</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GLOBAL COSMETICS GRID -->
+            <section class="cosmetics-section">
+                <div class="section-header">
+                    <h2>Catálogo de Governança</h2>
+                    <p>Itens que alteram a experiência de todos os membros nesta bolha.</p>
+                </div>
+
+                <div class="governance-grid">
+                    <div class="gov-card" *ngFor="let item of globalItems">
+                        <div class="gov-visual" [style.backgroundColor]="item.previewColor">
+                            <span class="gov-icon">{{ item.icon }}</span>
+                            <span class="status-tag" *ngIf="item.owned">ADQUIRIDO</span>
+                        </div>
+                        <div class="gov-body">
+                            <div class="gov-meta">
+                                <h4>{{ item.name }}</h4>
+                                <p>{{ item.description }}</p>
+                            </div>
+                            <div class="gov-action">
+                                <div class="price">🪙 {{ item.price }}</div>
+                                <button class="btn btn-buy" [disabled]="item.owned">
+                                    <span>{{ item.owned ? 'Ativar' : 'Adquirir' }}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+</div>

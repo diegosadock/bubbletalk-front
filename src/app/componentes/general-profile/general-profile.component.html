@@ -1,53 +1,79 @@
-<section class="profile-hero">
-  <div class="hero-inner">
-    <img [src]="user.avatarUrl" class="avatar-xl" />
-
-    <div class="identity">
-      <div class="top-row">
-        <h1>{{ user.displayName }}</h1>
-        <button class="btn-follow">Seguir</button>
+<div class="profile-container">
+  <header class="profile-header">
+    <div class="banner" [style.backgroundImage]="'url(' + user.bannerUrl + ')'"></div>
+    <div class="header-content">
+      <div class="avatar-wrapper">
+        <img [src]="user.avatarUrl" class="avatar-main" alt="Avatar do usuário" />
       </div>
-      <span class="username">&#64;{{ user.username }}</span>
-
-      <p class="bio">{{ user.bio }}</p>
-
-      <div class="tags">
-        <span class="tag">Nível {{ user.level }}</span>
-        <span class="tag">{{ user.title }}</span>
-        <span class="tag muted">Desde {{ user.joinedAt }}</span>
+      <div class="action-bar">
+        <button class="btn-edit">Editar Perfil</button>
+        <button class="btn-share"><i class="bi bi-share"></i></button>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="profile-stats">
-  <div class="stat-card">
-    <small>Bolhas</small>
-    <strong>{{ user.stats.bubbles }}</strong>
-  </div>
-  <div class="stat-card">
-    <small>Posts</small>
-    <strong>{{ user.stats.posts }}</strong>
-  </div>
-  <div class="stat-card">
-    <small>Interações</small>
-    <strong>{{ user.stats.interactions }}</strong>
-  </div>
-  <div class="stat-card wide">
-    <small>Principais bolhas</small>
-    <div class="bubble-list">
-      <span class="bubble-pill" *ngFor="let a of user.activities">{{ a.bubble }}</span>
+  <section class="identity-section">
+    <div class="name-row">
+      <h1>{{ user.displayName }}</h1>
+      <span class="user-handle">&#64;{{ user.username }}</span>
+    </div>
+    <p class="bio-text">{{ user.bio }}</p>
+
+    <div class="profile-meta">
+      <span class="meta-item"><i class="icon-calendar"></i> Entrou em {{ user.joinedAt }}</span>
+      <div class="social-pills">
+        <a *ngFor="let link of user.socialLinks" [href]="link.url" class="social-pill" target="_blank">
+          {{ link.platform }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-value">{{ user.stats.bubbles }}</span>
+      <span class="stat-label">Bolhas</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">{{ user.stats.posts }}</span>
+      <span class="stat-label">Posts</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">{{ user.stats.followers}}</span>
+      <span class="stat-label">Seguidores</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">{{ user.stats.following }}</span>
+      <span class="stat-label">Seguindo</span>
     </div>
   </div>
-</section>
 
-<section class="activity">
-  <h3>Atividade recente</h3>
+  <div class="profile-main-grid">
+    <div class="left-column">
+      <section class="bubbles-section">
+        <h3>Bolhas Sugeridas / Participando</h3>
+        <div class="bubble-grid">
+          <div class="bubble-mini-card" *ngFor="let b of user.joinedBubbles">
+            <span class="bubble-icon" [style.backgroundColor]="b.color">{{ b.icon }}</span>
+            <span class="bubble-name">{{ b.name }}</span>
+          </div>
+        </div>
+      </section>
+    </div>
 
-  <div class="activity-item" *ngFor="let a of user.activities">
-    <span class="dot" [style.background]="a.color"></span>
-    <p>
-      <strong>{{ a.bubble }}</strong> — {{ a.text }}
-    </p>
+    <aside class="right-column">
+      <section class="activity-section">
+        <h3>Atividade Recente</h3>
+        <div class="activity-feed">
+          <div class="activity-card" *ngFor="let act of user.recentActivity">
+            <div class="act-header">
+              <strong>{{ act.bubble }}</strong>
+              <small>{{ act.time }}</small>
+            </div>
+            <p>{{ act.text }}</p>
+          </div>
+        </div>
+      </section>
+    </aside>
   </div>
-</section>
+</div>

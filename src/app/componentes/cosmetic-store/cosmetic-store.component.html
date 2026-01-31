@@ -1,0 +1,60 @@
+<div class="store-layout">
+    <!-- SIDEBAR DE NAVEGAÇÃO -->
+    <aside class="store-sidebar">
+        <div class="balance-card">
+            <small>Seu Saldo</small>
+            <div class="money">
+                <span class="currency">🪙</span>
+                <strong>{{ userBalance | number }}</strong>
+            </div>
+        </div>
+
+        <nav class="category-list">
+            <button *ngFor="let cat of categories" [ngClass]="{'active': activeCategory === cat.id}"
+                (click)="setCategory(cat.id)">
+                {{ cat.label }}
+            </button>
+        </nav>
+
+        <div class="pro-badge">
+            <p>Ganhe +30% de moedas com <strong>Bubble Premium</strong></p>
+            <button class="btn-upgrade">UPGRADE</button>
+        </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="store-main">
+        <header class="store-header">
+            <div class="featured-banner">
+                <div class="featured-info">
+                    <span class="badge-featured">DESTAQUE DA SEMANA</span>
+                    <h1>Tema: OÁSIS GALÁCTICO 🌌</h1>
+                    <p>Transforme seu perfil em um santuário estelar com efeitos de partículas únicos.</p>
+                    <button class="btn btn-primary">COMPRAR POR 25.000</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="items-section">
+            <div class="section-title">
+                <h2>{{ activeCategory | titlecase }} Disponíveis</h2>
+            </div>
+
+            <div class="items-grid">
+                <div class="item-card" *ngFor="let item of currentItems" [ngClass]="item.rarity">
+                    <div class="item-visual">
+                        <span class="item-icon">{{ item.icon }}</span>
+                        <div class="rarity-tag">{{ item.rarity }}</div>
+                    </div>
+                    <div class="item-footer">
+                        <span class="item-name">{{ item.name }}</span>
+                        <div class="item-price">
+                            <span>🪙 {{ item.price | number }}</span>
+                            <button class="btn-buy-mini">COMPRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

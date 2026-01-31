@@ -1,0 +1,184 @@
+<div class="bubble-home-root" [style.--bubble-color]="bubble.color">
+
+    <!-- HERO: IMERSÃO TOTAL NA BOLHA -->
+    <header class="bubble-hero" [style.backgroundImage]="'url(' + bubble.bannerUrl + ')'">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="bubble-identity">
+                <span class="bubble-symbol">{{ bubble.symbol }}</span>
+                <div class="titles">
+                    <h1>{{ bubble.name }}</h1>
+                    <p class="slogan">"{{ bubble.slogan || 'Onde as conversas flutuam...' }}"</p>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="h-stat">
+                    <strong>12.4k</strong>
+                    <span>Membros</span>
+                </div>
+                <div class="h-stat">
+                    <strong>842</strong>
+                    <span>Online</span>
+                </div>
+                <div class="h-stat lvl">
+                    <strong>LVL 12</strong>
+                    <span>Bolha Elite</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <button class="btn btn-primary" [style.backgroundColor]="bubble.color">
+                    <span>Participar da Bolha</span>
+                </button>
+                <button class="btn btn-treasury" routerLink="/bubble/treasury" *ngIf="isMod">
+                    <span>⚙️ Gestão da Bolha</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION: ORKUT STYLE TABS -->
+    <nav class="bubble-nav">
+        <div class="nav-container">
+            <button class="nav-link active">Feed Principal</button>
+            <button class="nav-link">Salas (Tópicos)</button>
+            <button class="nav-link">Membros</button>
+            <button class="nav-link">Galeria</button>
+            <button class="nav-link">Sobre</button>
+        </div>
+    </nav>
+
+    <!-- MAIN LAYOUT -->
+    <div class="main-layout">
+
+        <!-- LEFT SIDEBAR: SALAS (ORKUT VIBES) -->
+        <aside class="sidebar-left">
+            <div class="module-card">
+                <h3>Saguão de Entrada</h3>
+                <p>Regras, Avisos e Boas-vindas.</p>
+            </div>
+
+            <div class="rooms-module">
+                <h3>Salas de Conversa</h3>
+                <div class="room-list">
+                    <div class="room-item active">
+                        <span class="room-icon">💬</span>
+                        <div class="room-info">
+                            <span class="name">Geral</span>
+                            <span class="activity">24 novas bolhas</span>
+                        </div>
+                    </div>
+                    <div class="room-item">
+                        <span class="room-icon">🎨</span>
+                        <div class="room-info">
+                            <span class="name">Artes & Design</span>
+                            <span class="activity">12 ativas</span>
+                        </div>
+                    </div>
+                    <div class="room-item">
+                        <span class="room-icon">🎮</span>
+                        <div class="room-info">
+                            <span class="name">Gaming Corner</span>
+                            <span class="activity">43 estourando</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-add-room">+ Criar Nova Sala</button>
+            </div>
+        </aside>
+
+        <!-- CONTENT: FEED (REDDIT VIBES) -->
+        <main class="content-feed">
+            <div class="create-post-placeholder">
+                <img [src]="user.avatarUrl" class="mini-avatar">
+                <input type="text" placeholder="Estoure uma ideia nesta bolha...">
+                <div class="actions">
+                    <button class="icon-btn" title="Adicionar imagem" aria-label="Adicionar imagem">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+                            <path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                            <circle cx="8.5" cy="8.5" r="1.8" fill="currentColor" />
+                            <path d="M21 15l-5-5-7 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" title="Adicionar link" aria-label="Adicionar link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+                            <path d="M10.59 13.41a3 3 0 0 0 4.24 0l1.77-1.77a3 3 0 0 0-4.24-4.24l-1.06 1.06" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.41 10.59a3 3 0 0 0-4.24 0L7.4 12.36a3 3 0 0 0 4.24 4.24l1.06-1.06" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="feed-sort">
+                <button class="sort-link active">Populares</button>
+                <button class="sort-link">Novos</button>
+                <button class="sort-link">Topo</button>
+            </div>
+
+            <!-- POST CARD -->
+            <article class="post-card" *ngFor="let post of posts">
+                <div class="vote-sidebar">
+                    <button class="vote-btn up" [class.active]="post.userVote === 1">▲</button>
+                    <span class="vote-count">{{ post.votes }}</span>
+                    <button class="vote-btn down" [class.active]="post.userVote === -1">▼</button>
+                </div>
+
+                <div class="post-main">
+                    <header class="post-header">
+                        <img [src]="post.authorAvatar" class="post-avatar">
+                        <span class="author">&#64;{{ post.author }}</span>
+                        <span class="time">• há {{ post.time }}</span>
+                        <span class="tag" *ngIf="post.tag">{{ post.tag }}</span>
+                    </header>
+
+                    <div class="post-body">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.content }}</p>
+                        <div class="post-media" *ngIf="post.image">
+                            <img [src]="post.image">
+                        </div>
+                    </div>
+
+                    <footer class="post-footer">
+                        <button class="foot-btn"><i class="icon-message"></i> {{ post.comments }} Comentários</button>
+                        <button class="foot-btn"><i class="icon-share"></i> Compartilhar</button>
+                        <button class="foot-btn"><i class="icon-award"></i> Premiar</button>
+                    </footer>
+                </div>
+            </article>
+        </main>
+
+        <!-- RIGHT SIDEBAR: COMMUNITY META -->
+        <aside class="sidebar-right">
+            <div class="about-module module-card">
+                <h3>Sobre a Bolha</h3>
+                <p>A maior comunidade de entusiastas de design e espiritualidade do país.</p>
+                <div class="joined-meta">
+                    <i class="icon-calendar"></i> Criada em Outubro de 2023
+                </div>
+                <button class="btn btn-outline btn-full">Ver Wiki da Bolha</button>
+            </div>
+
+            <div class="treasury-preview module-card">
+                <div class="t-header">
+                    <h3>Tesouro Comunitário</h3>
+                    <span class="t-val">🪙 42.5k</span>
+                </div>
+                <p class="t-desc">Próxima meta: <strong>Tema Noturno Animado</strong></p>
+                <div class="progress-container">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <button class="btn btn-treasury-lite btn-full">Contribuir Pontos</button>
+            </div>
+
+            <div class="mod-list module-card">
+                <h3>Guardiões (Mods)</h3>
+                <div class="mod-avatar-list">
+                    <img src="assets/erik.jpg" title="seninha" class="mod-avatar">
+                    <div class="mod-add">+</div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+</div>

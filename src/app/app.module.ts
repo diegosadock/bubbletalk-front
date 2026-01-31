@@ -10,6 +10,9 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { CreateBubbleComponent } from './componentes/create-bubble/create-bubble.component';
 import { GeneralProfileComponent } from './componentes/general-profile/general-profile.component';
 import { BubbleProfileComponent } from './componentes/bubble-profile/bubble-profile.component';
+import { CosmeticStoreComponent } from './componentes/cosmetic-store/cosmetic-store.component';
+import { BubbleTreasuryComponent } from './componentes/bubble-treasury/bubble-treasury.component';
+import { BubbleHome2Component } from './componentes/bubble-home/bubble-home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { BubbleProfileComponent } from './componentes/bubble-profile/bubble-prof
     NavbarComponent,
     CreateBubbleComponent,
     GeneralProfileComponent,
-    BubbleProfileComponent
+    BubbleProfileComponent,
+    CosmeticStoreComponent,
+    BubbleTreasuryComponent,
+    BubbleHome2Component
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,369 @@
+.treasury-root {
+    --bubble-accent: var(--bubble-color, #6f42c1);
+    --bg-dark: #07080c;
+    --gold: #ffd700;
+    min-height: 100vh;
+    background: var(--bg-dark);
+    background-color: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+/* TREASURY HEADER */
+.treasury-header {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+    padding: 40px 8%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.btn-back {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.title-group h1 {
+    font-size: 2.5rem;
+    font-weight: 950;
+    margin: 0;
+    letter-spacing: -1.5px;
+}
+
+.status-token {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 800;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.balance-mega-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    padding: 20px 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.balance-info small {
+    color: #6c757d;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.balance-info strong {
+    font-size: 2.5rem;
+    font-weight: 950;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.btn-deposit {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+/* LAYOUT */
+.treasury-layout {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+/* ensure layout area expands to fill vertical space so background covers whole page */
+.treasury-layout {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+/* TABS */
+.treasury-nav {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 10px;
+}
+
+.tab-link {
+    background: transparent;
+    border: none;
+    color: #6c757d;
+    font-weight: 800;
+    padding: 10px 0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.tab-link.active {
+    color: #fff;
+}
+
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+}
+
+/* VOTING BANNER */
+.voting-banner {
+    background: linear-gradient(135deg, var(--bubble-accent) 0%, #000 100%);
+    border-radius: 35px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.voting-banner::before {
+    content: '🗳️';
+    position: absolute;
+    font-size: 15rem;
+    top: -30px;
+    left: -20px;
+    opacity: 0.1;
+    transform: rotate(-15deg);
+}
+
+.v-tag {
+    background: #ff4500;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 900;
+    font-size: 0.7rem;
+}
+
+.v-text h3 {
+    font-size: 2.22rem;
+    font-weight: 950;
+    margin: 15px 0;
+    line-height: 1.1;
+}
+
+.v-text p {
+    color: #adb5bd;
+    font-size: 1.1rem;
+}
+
+.v-option {
+    margin-bottom: 25px;
+}
+
+.opt-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.opt-info .name {
+    font-weight: 800;
+}
+
+.opt-info .votes {
+    font-weight: 950;
+    color: var(--gold);
+}
+
+.v-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.v-fill {
+    height: 100%;
+    background: var(--gold);
+    transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-vote {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-vote:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* COSMETICS GRID */
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 950;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #6c757d;
+    margin-bottom: 40px;
+}
+
+.governance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.gov-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.gov-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--bubble-accent);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.gov-visual {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.gov-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+}
+
+.status-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.65rem;
+}
+
+.gov-body {
+    padding: 30px;
+}
+
+.gov-meta h4 {
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.gov-meta p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    height: 3.2em;
+    overflow: hidden;
+}
+
+.gov-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+
+.price {
+    font-weight: 950;
+    font-size: 1.3rem;
+    color: var(--gold);
+}
+
+.btn-buy {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 25px;
+    border-radius: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.btn-buy:hover:not(:disabled) {
+    background: #fff;
+    color: #000;
+}
+
+.btn-buy:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+@media (max-width: 900px) {
+    .voting-banner {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+
+    .balance-mega-card {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
